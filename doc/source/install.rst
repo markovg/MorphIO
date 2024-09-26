@@ -63,7 +63,7 @@ Build & Install on Anaconda3 for Windows
 --------------------------------
 
 In case you want to do some thing more fancy that pip install the released wheel, you can also build it yourself locally.
-You need anaconda3 (installed user local, and setup to work with powershell), VS2022 build tools for C++ and windows 10.
+You need anaconda3 (installed user local, and setup to work with powershell), `VS2022 Build Tools <https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022>`_ for C++ and windows 10.
 
 I installed these things in my conda env:
 
