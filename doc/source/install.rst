@@ -58,3 +58,35 @@ The python binding can directly be installed using pip:
 .. code-block:: shell
 
    pip install morphio
+
+Build & Install on Anaconda3 for Windows
+--------------------------------
+
+In case you want to do some thing more fancy that pip install the released wheel, you can also build it yourself locally.
+You need anaconda3 (installed user local, and setup to work with powershell), VS2022 build tools for C++ and windows 10.
+
+I installed these things in my conda env:
+.. code-block:: shell
+
+   conda install hdf5
+   conda install conda-build vs2022_win-64 cmake
+   pip install scikit-build-core
+   conda install -c conda-forge ninja
+   pip install h5py
+
+
+
+For posterity, I included a dump of my conda environment under: conda_build_environment.yaml
+
+Powershell with your conda environemnt activated:
+.. code-block:: shell
+
+   $Env:CMAKE_ARGS = '-DMorphIO_WERROR=true -DMorphIO_CXX_WARNINGS=true -DMORPHIO_TESTS=false -DHDF5_DIR=C:/Users/<username>/anaconda3/envs/<conda-env>/Library/share/cmake/hdf5 -DHDF5_DIFF_EXECUTABLE=C:/Users/<username>/anaconda3/envs/<conda-env>/Library/bin/h5diff.exe -DBUILD_BINDINGS=true -DPYTHON_EXECUTABLE=C:/Users/<username>/anaconda3/envs/<conda-env>/python.exe'
+   pip install .
+
+For debugging of the build, as follows:
+.. code-block:: shell
+
+   $Env:SKBUILD_BUILD_DIR = "C:\Users\<username>\src\MorphIO\_skbuild"
+   pip wheel . -vv
+   wheel unpack <output.whl>

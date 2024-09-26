@@ -12,7 +12,7 @@ testpaths = ["tests"]
 
 [project]
 name = "morphio"
-version = "0.1.0"
+version = "3.3.9"
 description = "MorphIO: A neuron morphology IO library"
 readme = "README.rst"
 license = { text = "BSD-3-Clause" }
