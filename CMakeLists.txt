@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.15)
 #allow using of HDF5_ROOT for building with a custom HDF5 version
 cmake_policy(SET CMP0074 NEW)
 project(MorphIO VERSION 2.0.0)
@@ -71,6 +71,26 @@ install(
   FILES ${CMAKE_CURRENT_LIST_DIR}/CMake/MorphIOConfig.cmake
   DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/MorphIO
   )
+
+
+# Find the Python interpreter and development components
+find_package(Python REQUIRED COMPONENTS Interpreter Development)
+
+# Verify that the Python version variables are set
+message(STATUS "Python version: ${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}")
+
+# Ensure `PYTHON_MODULE_INSTALL_DIR` is set relative to the install prefix
+if(NOT DEFINED PYTHON_MODULE_INSTALL_DIR)
+    set(PYTHON_MODULE_INSTALL_DIR "lib/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages")
+endif()
+
+# Install the _morphio extension module
+install(TARGETS _morphio
+        LIBRARY DESTINATION morphio
+        ARCHIVE DESTINATION morphio
+        RUNTIME DESTINATION morphio
+        COMPONENT python)
+
 
 
 if (MORPHIO_TESTS)

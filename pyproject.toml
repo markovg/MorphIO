@@ -1,5 +1,38 @@
 [build-system]
-requires = ["setuptools>=24.2.0", "wheel", "cmake", "ninja"]
+requires = [
+    "scikit-build-core>=0.5.1",
+    "setuptools>=42",
+    "wheel",
+]
+build-backend = "scikit_build_core.build"
+
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[project]
+name = "morphio"
+version = "0.1.0"
+description = "MorphIO: A neuron morphology IO library"
+readme = "README.rst"
+license = { text = "BSD-3-Clause" }
+authors = [
+    { name = "Blue Brain Project", email = "bbp@example.com" }
+]
+keywords = ["neuron", "morphology", "bioinformatics"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: C++",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "numpy>=1.19.2",
+]
+requires-python = ">=3.6"
+packages = ["morphio"]
+include = ["morphio/_morphio*.pyd"]
+
+[project.urls]
+"Homepage" = "https://github.com/BlueBrain/MorphIO"
+"Repository" = "https://github.com/BlueBrain/MorphIO"
+
