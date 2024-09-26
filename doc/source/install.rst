@@ -66,6 +66,7 @@ In case you want to do some thing more fancy that pip install the released wheel
 You need anaconda3 (installed user local, and setup to work with powershell), VS2022 build tools for C++ and windows 10.
 
 I installed these things in my conda env:
+
 .. code-block:: shell
 
    conda install hdf5
@@ -75,16 +76,17 @@ I installed these things in my conda env:
    pip install h5py
 
 
-
 For posterity, I included a dump of my conda environment under: conda_build_environment.yaml
 
 Powershell with your conda environemnt activated:
+
 .. code-block:: shell
 
    $Env:CMAKE_ARGS = '-DMorphIO_WERROR=true -DMorphIO_CXX_WARNINGS=true -DMORPHIO_TESTS=false -DHDF5_DIR=C:/Users/<username>/anaconda3/envs/<conda-env>/Library/share/cmake/hdf5 -DHDF5_DIFF_EXECUTABLE=C:/Users/<username>/anaconda3/envs/<conda-env>/Library/bin/h5diff.exe -DBUILD_BINDINGS=true -DPYTHON_EXECUTABLE=C:/Users/<username>/anaconda3/envs/<conda-env>/python.exe'
    pip install .
 
 For debugging of the build, as follows:
+
 .. code-block:: shell
 
    $Env:SKBUILD_BUILD_DIR = "C:\Users\<username>\src\MorphIO\_skbuild"
